@@ -5,9 +5,10 @@ import { DbService } from 'src/db/db.service';
 export class PartnersService {
   constructor(private readonly prisma: DbService) {}
   async findPartnerByEmail(email: string) {
-    return await this.prisma.partner.findUnique({
+    const partner = await this.prisma.partner.findUnique({
       where: { email },
     });
+    return partner;
   }
 
   async createPartner(data: any) {
